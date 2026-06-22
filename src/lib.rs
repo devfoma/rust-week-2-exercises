@@ -57,6 +57,7 @@ impl Wallet for TestWallet {
 
 pub fn apply_fee(balance: &mut u64, fee: u64) {
     // TODO: Subtract fee from mutable balance reference
+    // Changed the value of existing balance by destructuring and extracting fee from cureent balance
     *balance -= fee;
 }
 
