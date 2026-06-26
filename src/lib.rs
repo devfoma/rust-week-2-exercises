@@ -42,11 +42,12 @@ pub fn classify_script(script: &[u8]) -> ScriptType {
     }
 }
 
-// TODO: complete Outpoint tuple struct
-pub struct Outpoint();
+// completed outpoint struct 
+pub struct Outpoint(pub Vec<u8>, pub u32);
 
 pub fn read_pushdata(script: &[u8]) -> &[u8] {
     // TODO: Return the pushdata portion of the script slice (assumes pushdata starts at index 2)
+    &script[2..]
 }
 
 pub trait Wallet {
@@ -72,6 +73,7 @@ pub fn apply_fee(balance: &mut u64, fee: u64) {
 
 pub fn move_txid(txid: String) -> String {
     // TODO: Return formatted string including the txid for display or logging
+    format!("Transaction ID: {}", txid)
 }
 
 // TODO: Add necessary derive traits
