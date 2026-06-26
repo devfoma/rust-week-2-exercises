@@ -1,21 +1,19 @@
-use hex::{decode, encode};
 
 pub fn decode_hex(hex_str: &str) -> Result<Vec<u8>, String> {
-    // TODO: Decode hex string into Vec<u8>, return error string on failure
-    decode(hex_str).map_err(|e| e.to_string())
+    hex::decode(hex_str).map_err(|e| e.to_string())
 }
 
-// pub fn to_big_endian(bytes: &[u8]) -> Vec<u8> {
-//     // TODO: Reverse the byte order of input slice and return as Vec<u8>
-// }
+pub fn to_big_endian(bytes: &[u8]) -> Vec<u8> {
+    bytes.iter().rev().cloned().collect()
+}
 
 pub fn bytes_to_hex(bytes: &[u8]) -> String {
-    encode(bytes)
+    hex::encode(bytes)
 }
 
-// pub fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, hex::FromHexError> {
-//     // TODO: Implement conversion of hex string to bytes vector
-// }
+pub fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, hex::FromHexError> {
+    
+}
 
 // pub fn swap_endian_u32(num: u32) -> [u8; 4] {
 //     // TODO: Implement little-endian byte swap for u32
