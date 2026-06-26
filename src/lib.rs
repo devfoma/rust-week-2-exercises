@@ -1,6 +1,7 @@
+use hex::decode;
 
 pub fn decode_hex(hex_str: &str) -> Result<Vec<u8>, String> {
-    hex::decode(hex_str).map_err(|e| e.to_string())
+    decode(hex_str).map_err(|e| e.to_string())
 }
 
 pub fn to_big_endian(bytes: &[u8]) -> Vec<u8> {
@@ -42,7 +43,7 @@ pub fn classify_script(script: &[u8]) -> ScriptType {
     }
 }
 
-// completed outpoint struct 
+// completed outpoint struct
 #[derive(Debug, Clone)]
 pub struct Outpoint(pub Vec<u8>, pub u32);
 
