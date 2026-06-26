@@ -12,33 +12,33 @@ pub fn bytes_to_hex(bytes: &[u8]) -> String {
 }
 
 pub fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, hex::FromHexError> {
+    hex::decode(hex)
+}
+
+pub fn swap_endian_u32(num: u32) -> [u8; 4] {
+    num.to_le_bytes()
+}
+
+pub fn parse_satoshis(input: &str) -> Result<u64, String> {
     
 }
 
-// pub fn swap_endian_u32(num: u32) -> [u8; 4] {
-//     // TODO: Implement little-endian byte swap for u32
-// }
+pub enum ScriptType {
+    P2PKH,
+    P2WPKH,
+    Unknown,
+}
 
-// pub fn parse_satoshis(input: &str) -> Result<u64, String> {
-//     // TODO: Parse input string to u64, return error string if invalid
-// }
+pub fn classify_script(script: &[u8]) -> ScriptType {
+    // TODO: Match script pattern and return corresponding ScriptType
+}
 
-// pub enum ScriptType {
-//     P2PKH,
-//     P2WPKH,
-//     Unknown,
-// }
+// TODO: complete Outpoint tuple struct
+pub struct Outpoint();
 
-// pub fn classify_script(script: &[u8]) -> ScriptType {
-//     // TODO: Match script pattern and return corresponding ScriptType
-// }
-
-// // TODO: complete Outpoint tuple struct
-// pub struct Outpoint();
-
-// pub fn read_pushdata(script: &[u8]) -> &[u8] {
-//     // TODO: Return the pushdata portion of the script slice (assumes pushdata starts at index 2)
-// }
+pub fn read_pushdata(script: &[u8]) -> &[u8] {
+    // TODO: Return the pushdata portion of the script slice (assumes pushdata starts at index 2)
+}
 
 pub trait Wallet {
     fn balance(&self) -> u64;
@@ -61,30 +61,30 @@ pub fn apply_fee(balance: &mut u64, fee: u64) {
     *balance -= fee;
 }
 
-// pub fn move_txid(txid: String) -> String {
-//     // TODO: Return formatted string including the txid for display or logging
-// }
+pub fn move_txid(txid: String) -> String {
+    // TODO: Return formatted string including the txid for display or logging
+}
 
-// // TODO: Add necessary derive traits
-// pub enum Opcode {
-//     OpChecksig,
-//     OpDup,
-//     OpInvalid,
-// }
+// TODO: Add necessary derive traits
+pub enum Opcode {
+    OpChecksig,
+    OpDup,
+    OpInvalid,
+}
 
-// impl Opcode {
-//     pub fn from_byte(byte: u8) -> Result<Self, String> {
-//         // TODO: Implement mapping from byte to Opcode variant
-//     }
-// }
+impl Opcode {
+    pub fn from_byte(byte: u8) -> Result<Self, String> {
+        // TODO: Implement mapping from byte to Opcode variant
+    }
+}
 
-// // TODO: Add necessary derive traits
-// pub struct UTXO {
-//     pub txid: Vec<u8>,
-//     pub vout: u32,
-//     pub value: u64,
-// }
+// TODO: Add necessary derive traits
+pub struct UTXO {
+    pub txid: Vec<u8>,
+    pub vout: u32,
+    pub value: u64,
+}
 
-// pub fn consume_utxo(utxo: UTXO) -> UTXO {
-//     // TODO: Implement UTXO consumption logic (if any)
-// }
+pub fn consume_utxo(utxo: UTXO) -> UTXO {
+    // TODO: Implement UTXO consumption logic (if any)
+}
