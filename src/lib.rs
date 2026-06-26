@@ -21,7 +21,6 @@ pub fn swap_endian_u32(num: u32) -> [u8; 4] {
 }
 
 pub fn parse_satoshis(input: &str) -> Result<u64, String> {
-
     match input.trim().parse::<u64>() {
         Ok(val) => Ok(val),
         Err(_) => Err("Invalid satoshi amount".to_string()),
